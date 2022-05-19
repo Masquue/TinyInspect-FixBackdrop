@@ -34,7 +34,7 @@ local slots = {
 local function GetInspectItemListFrame(parent)
     if (not parent.inspectFrame) then
         local itemfont = "ChatFontNormal"
-        local frame = CreateFrame("Frame", nil, parent)
+        local frame = CreateFrame("Frame", nil, parent, BackdropTemplateMixin and "BackdropTemplate")
         frame.backdrop = {
             bgFile   = "Interface\\Tooltips\\UI-Tooltip-Background",
             edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
@@ -79,7 +79,7 @@ local function GetInspectItemListFrame(parent)
             else
                 itemframe:SetPoint("TOPLEFT", frame["item"..(i-1)], "BOTTOMLEFT")
             end
-            itemframe.label = CreateFrame("Frame", nil, itemframe)
+            itemframe.label = CreateFrame("Frame", nil, itemframe, BackdropTemplateMixin and "BackdropTemplate")
             itemframe.label:SetSize(38, 16)
             itemframe.label:SetPoint("LEFT")
             itemframe.label:SetBackdrop(backdrop)
@@ -304,7 +304,7 @@ end)
 --   Player   --
 ----------------
 
-local PlayerStatsFrame = CreateFrame("Frame", nil, UIParent, "ClassicStatsFrameTemplate")
+local PlayerStatsFrame = CreateFrame("Frame", nil, UIParent, BackdropTemplateMixin and "BackdropTemplate,ClassicStatsFrameTemplate")
 local mask = PlayerStatsFrame:CreateTexture()
 mask:SetTexture("Interface\\Tooltips\\UI-Tooltip-Background")
 mask:SetPoint("TOPLEFT", PlayerStatsFrame, "TOPLEFT", 3, -2)
